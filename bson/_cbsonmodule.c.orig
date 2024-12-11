@@ -923,14 +923,8 @@ static PyObject* get_value(const char* buffer, int* position, int type,
 
                 Py_INCREF(collection);
                 PyDict_DelItemString(value, "$ref");
-
-                if (id == NULL) {
-                    id = Py_None;
-                    Py_INCREF(id);
-                } else {
-                    Py_INCREF(id);
-                    PyDict_DelItemString(value, "$id");
-                }
+                Py_INCREF(id);
+                PyDict_DelItemString(value, "$id");
 
                 if (database == NULL) {
                     database = Py_None;
